@@ -1,9 +1,12 @@
 package guru.springframework.msscbeerservice.mappers;
 
+import org.mapstruct.Mapper;
+
 import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
+@Mapper
 public class DateMapper {
     public OffsetDateTime asOffsetDateTime(Timestamp ts){
         if (ts != null){
