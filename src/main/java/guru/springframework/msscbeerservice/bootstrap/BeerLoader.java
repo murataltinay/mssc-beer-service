@@ -9,6 +9,11 @@ import java.math.BigDecimal;
 
 @Component
 public class BeerLoader implements CommandLineRunner {
+
+    public static final String BEER_1_UPC="0215400003121";
+    public static final String BEER_2_UPC="0103000000004";
+    public static final String BEER_3_UPC="0215540000654";
+
     private final BeerRepository beerRepository;
 
     public BeerLoader(BeerRepository beerRepository) {
@@ -23,13 +28,28 @@ public class BeerLoader implements CommandLineRunner {
 
     private void loadBeerObjects() {
         if(beerRepository.count()==0){
-            beerRepository.save(Beer.builder().beerName("Mango Bobs").beerStyle("IPA")
-                            .quantityToBrew(200).minOnHand(12)
-                            .price(new BigDecimal("12.95")).upc(154650000001L).build());
-
-            beerRepository.save(Beer.builder().beerName("Galaxy Cat").beerStyle("PALE ALE")
+            beerRepository.save(Beer.builder()
+                    .beerName("Mango Bobs")
+                    .beerStyle("IPA")
                     .quantityToBrew(200).minOnHand(12)
-                    .price(new BigDecimal("12.95")).upc(154650000002L).build());
+                    .price(new BigDecimal("12.95"))
+                    .upc(BEER_1_UPC)
+                    .build());
+
+            beerRepository.save(Beer.builder()
+                    .beerName("Galaxy Cat")
+                    .beerStyle("PALE ALE")
+                    .quantityToBrew(200).minOnHand(12)
+                    .price(new BigDecimal("12.95"))
+                    .upc(BEER_2_UPC)
+                    .build());
+            beerRepository.save(Beer.builder()
+                    .beerName("Kozel")
+                    .beerStyle("PALE ALE")
+                    .quantityToBrew(200).minOnHand(12)
+                    .price(new BigDecimal("12.95"))
+                    .upc(BEER_3_UPC)
+                    .build());
 
 
         }
